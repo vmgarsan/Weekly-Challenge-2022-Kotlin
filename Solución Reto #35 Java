@@ -1,0 +1,110 @@
+public class Main {
+
+
+    static String atacante = "";
+    static String defensor = "";
+    static int ataque = (int) Math.floor(Math.random() * 100 + 1);
+    static int defensa = (int) Math.floor(Math.random() * 100 + 1);
+    static double efectividad = 0;
+    static double dano;
+
+    public static void main(String[] args) {
+
+        // Autor: Rickt0r
+        /*
+         * Enunciado: Crea un programa que calcule el daño de un ataque durante
+         * una batalla Pokémon.
+         * - La fórmula será la siguiente: daño = 50 * (ataque / defensa) * efectividad
+         * - Efectividad: x2 (súper efectivo), x1 (neutral), x0.5 (no es muy efectivo)
+         * - Sólo hay 4 tipos de Pokémon: Agua, Fuego, Planta y Eléctrico
+         *   (buscar su efectividad)
+         * - El programa recibe los siguientes parámetros:
+         *  - Tipo del Pokémon atacante.
+         *  - Tipo del Pokémon defensor.
+         *  - Ataque: Entre 1 y 100.
+         *  - Defensa: Entre 1 y 100.
+         */
+        atacante = "Fuego";
+        defensor = "Planta";
+        // Mostramos info
+        System.out.println("BATALLA POKEMON");
+        System.out.println("ATACANTE TIPO: " + atacante + " Ataque: " + ataque);
+        System.out.println("DEFENSOR TIPO: " + defensor + " Defensa: " + defensa);
+        //Ejecucion del calculo
+        danoPokemon();
+
+        if (dano > 0) {
+            System.out.println("Ha recibido un daño de " + dano + " puntos");
+        } else {
+            System.out.println("No ha recibido daño");
+        }
+
+    }
+
+    //calculamos daño
+    public static double danoPokemon() {
+
+        dano = 50 * (ataque / defensa) * efectividad(atacante, defensor);
+        return dano;
+    }
+
+    //calculamos eficacia
+    public static double efectividad(String atacante, String defensor) {
+
+        if (atacante.equals(defensor)) {
+            //Neutral
+            efectividad = 1;
+        }
+        if (atacante == "Agua" && defensor == "Fuego") {
+            //súper efectivo
+            efectividad = 2;
+        }
+        if (atacante == "Agua" && defensor == "Planta") {
+            //no efectivo
+            efectividad = 0.5;
+        }
+        if (atacante == "Agua" && defensor == "Eléctrico") {
+            //súper efectivo
+            efectividad = 2;
+        }
+        if (atacante == "Fuego" && defensor == "Agua") {
+            //no efectivo
+            efectividad = 0.5;
+        }
+        if (atacante == "Fuego" && defensor == "Planta") {
+            //súper efectivo
+            efectividad = 2;
+        }
+        if (atacante == "Fuego" && defensor == "Eléctrico") {
+            //no efectivo
+            efectividad = 0.5;
+        }
+        if (atacante == "Planta" && defensor == "Agua") {
+            //súper efectivo
+            efectividad = 2;
+        }
+        if (atacante == "Planta" && defensor == "Fuego") {
+            //no efectivo
+            efectividad = 0.5;
+        }
+        if (atacante == "Planta" && defensor == "Eléctrico") {
+            //no efectivo
+            efectividad = 0.5;
+        }
+        if (atacante == "Eléctrico" && defensor == "Agua") {
+            //súper efectivo
+            efectividad = 2;
+        }
+        if (atacante == "Eléctrico" && defensor == "Fuego") {
+            //no efectivo
+            efectividad = 0.5;
+        }
+        if (atacante == "Eléctrico" && defensor == "Planta") {
+            //súper efectivo
+            efectividad = 2;
+        }
+        return efectividad;
+    }
+
+
+}
